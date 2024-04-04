@@ -22,7 +22,6 @@ cloudinary.config(
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -34,7 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-import  pymysql
+import pymysql
+
 pymysql.install_as_MySQLdb()
 
 CKEDITOR_UPLOAD_PATH = "ckeditor/images"
@@ -43,7 +43,6 @@ CKEDITOR_UPLOAD_PATH = "ckeditor/images"
 
 
 MEDIA_ROOT = '%s/course/static/' % BASE_DIR
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,9 +55,16 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'oauth2_provider'
 ]
 
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,22 +96,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'coursappapi.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'courseapi',
-    'USER': 'root',
-    'PASSWORD': 'Admin@123',
-    'HOST': '' # mặc định localhost
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'courseapi',
+        'USER': 'root',
+        'PASSWORD': 'Admin@123',
+        'HOST': ''  # mặc định localhost
     }
 }
 
 AUTH_USER_MODEL = 'course.User'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -125,7 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -136,7 +139,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
