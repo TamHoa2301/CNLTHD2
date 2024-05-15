@@ -9,6 +9,9 @@ class CategoryViewset(viewsets.ViewSet, generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
 
+class UserViewset(viewsets.ViewSet, generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
 
 class CourseViewset(viewsets.ViewSet, generics.ListAPIView):
     queryset = Course.objects.filter(active=True)

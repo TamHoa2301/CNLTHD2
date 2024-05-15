@@ -12,6 +12,7 @@ r.register('comment', views.CommentViewSet, basename='comments')
 
 
 
+
 urlpatterns = [
     path('', include(r.urls))
 ]

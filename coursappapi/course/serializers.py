@@ -7,6 +7,10 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
+class UserSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class ItemSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
